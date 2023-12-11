@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Icon, TextArea } from '@mdsol/onex-design';
-import './AddDrawer.scss';
+import { Mention, MentionsInput } from "react-mentions";
+import { Button, Icon } from '@mdsol/onex-design';
+import style from './AddDrawer.scss';
 
 const AddDrawer = ({
   handleCancelButtonClick,
@@ -10,18 +11,29 @@ const AddDrawer = ({
   placeholder,
   maxLength,
 }) => {
+  const data = [
+    {
+      id: "Avatar",
+      display: "Avatar Aang",
+    },
+    {
+      id: "Spiderman",
+      display: "Peter Parker",
+    },
+  ];
+
   return (
     <>
-      <TextArea
+      <MentionsInput 
         className="add-drawer-text-area"
         dataTestId="add-drawer-text-area"
         errorMessage={`Cannot exceed ${maxLength} characters'`}
-        placeholder={placeholder}
-        onChange={setTextValue}
-        maxNumLength={maxLength}
         value={textValue}
-        rows={2}
-      />
+        onChange={(e) => setTextValue(e.target.value)}
+        placeholder={placeholder}>
+        <Mention style={style.mentions__mention} data={data} />
+        <Mention className={style.mentions__mention} data={data} trigger={"?email"} />
+      </MentionsInput>
       <div className="add-drawer-btns">
         <Button
           buttonType="icon"
