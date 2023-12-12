@@ -6,7 +6,8 @@
         "StudyName": "Study-Med",
         "createdBy": "Neha SINGH",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       },
       {
         "Id": "01512b1e-8c99-43ed-97ed-4bd1287d85b0",
@@ -15,7 +16,8 @@
         "StudyName": "Study-Med",
         "createdBy" : "Nandish DHADD",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       },
       {
         "Id": "88fc2cf8-c1b7-4824-a5e1-f513dcd906f0",
@@ -24,7 +26,8 @@
         "StudyName": "Study-Med",
         "createdBy" : "Omkar SAWANT",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       },
       {
         "Id": "bdfefab6-576b-4059-b1e8-7d425f348e0c",
@@ -33,7 +36,8 @@
         "StudyName": "Study-Med",
         "createdBy" : "Pooja GOURAJ",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       },
       {
         "Id": "8226893a-945f-498b-a216-8f006ec419f1",
@@ -42,7 +46,8 @@
         "StudyName": "Study-Med",
         "createdBy" : "Shubham RATHOD",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       },
       {
         "Id": "e3942dad-427c-42de-a33f-b6277408f262",
@@ -51,6 +56,7 @@
         "StudyName": "Study-Med",
         "createdBy" : "Snehal SONAYE",
         "createdOn": "10/10/2021",
-        "lastUpdatedOn": "12/02/2023"
+        "lastUpdatedOn": "12/02/2023",
+        "showDrawer" : false
       }
 ]

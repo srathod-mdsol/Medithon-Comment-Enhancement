@@ -27,13 +27,13 @@ const EditCheckList = () => {
                 <div className='editcheckHeaderTextLast'></div>
             </div>
             {editChecks.map((ec,i)=> {
-                return (<div className='editcheckRow' style={i === 0 ? {marginTop : '8px'} : {} }>
+                return (<div key={i} className='editcheckRow' style={i === 0 ? {marginTop : '8px'} : {} }>
                     <div className='editcheckItem'>{ec.Name} </div>
                     <div className='editcheckItem'>{ec.createdBy}</div>
                     <div className='editcheckItem'>{ec.createdOn}</div>
                     <div className='editcheckItem'>{ec.lastUpdatedOn}</div>
                     <div className='editcheckItemLast'>
-                        <CommentsDrawer editCheck={ec}></CommentsDrawer>
+                        <CommentsDrawer key={i} editCheck={ec}></CommentsDrawer>
                     </div>
                 </div>)
             })}

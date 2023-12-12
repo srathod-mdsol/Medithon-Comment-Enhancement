@@ -2,6 +2,7 @@
   "name": "rule-query-language",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:5000",
   "dependencies": {
     "@mdsol/onex-design": "^2.9.0",
     "@mdsol/sandman": "^2.0.0-rc4",

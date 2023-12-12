@@ -1,18 +1,16 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://dummyjson.com',
-    headers: {
-        // 'content-type':'application/octet-stream',
-        // 'x-rapidapi-host':'example.com',
-        // 'x-rapidapi-key': process.env.RAPIDAPI_KEY
-    },
+    baseURL: 'http://localhost:5000/api/v1',
 });
 
-export const getData = () => instance({
+export const getUsers = () => instance({
         'method':'GET',
-        'url':'/products/1',
-        // 'params': {
-        //     'search':'parameter',
-        // },
-    })
+        'url':'/comments/get_all_users',
+})
+
+export const addComments = (body) => instance({
+    'method':'POST',
+    'url':'/comments',
+    'body':body
+})

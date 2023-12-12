@@ -5,7 +5,6 @@ const MAX_COMMENT_LENGTH = 500;
 
 const AddCommentDrawer = ({ handleAddComment, handleCloseCommentDrawer }) => {
   const [newComment, setNewComment] = useState('');
-
   return (
     <div className="comments-add-drawer">
       <AddDrawer

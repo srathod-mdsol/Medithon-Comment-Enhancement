@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mention, MentionsInput } from "react-mentions";
 import { Button, Icon } from '@mdsol/onex-design';
 import style from './AddDrawer.scss';
@@ -11,28 +11,37 @@ const AddDrawer = ({
   placeholder,
   maxLength,
 }) => {
-  const data = [
-    {
-      id: "Avatar",
-      display: "Avatar Aang",
-    },
-    {
-      id: "Spiderman",
-      display: "Peter Parker",
-    },
-  ];
+  const [data, setData] = useState([{
+    "id": "184155cd-8dfb-4424-aa15-25806339d8ce",
+    "display": "Nandish Dhadd",
+    "email": "ndhadd@mdsol.com"
+},
+{
+    "id": "8e53fc1e-de3a-4218-9752-5e13579fc4ea",
+    "display": "Shubham Rathod",
+    "email": "srathod@mdsol.com"
+},
+{
+    "id": "414b2574-6cf5-4e5f-82fd-2346083b0d8a",
+    "display": "Omkar Sawant",
+    "email": "osawant@mdsol.com"
+}]);
+  useEffect(()=>{
+    // getUsers().then((response) => {
+    //   setData(response.data);
+    // });
+  })
 
   return (
     <>
       <MentionsInput 
-        className="add-drawer-text-area"
-        dataTestId="add-drawer-text-area"
+        className="drawer_textarea"
+        dataTestId="drawer_textarea"
         errorMessage={`Cannot exceed ${maxLength} characters'`}
         value={textValue}
         onChange={(e) => setTextValue(e.target.value)}
         placeholder={placeholder}>
-        <Mention style={style.mentions__mention} data={data} />
-        <Mention className={style.mentions__mention} data={data} trigger={"?email"} />
+        <Mention style={style.drawer_textarea__mention} data={data} />
       </MentionsInput>
       <div className="add-drawer-btns">
         <Button

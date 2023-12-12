@@ -3,14 +3,13 @@ import { Button, EmptyState, Icon, Offcanvas, Select } from '@mdsol/onex-design'
 import CommentItem from './CommentItem';
 import AddCommentDrawer from './AddCommentDrawer';
 import './CommentsDrawer.scss';
-import  { getData }  from '../API/getUser'
-import { useNavigate , useParams } from "react-router-dom"
-
+import { addComments } from '../API/getUser'
+import { useNavigate , useParams } from "react-router-dom";
 
 const sortCommentsByLatestActivity = comments =>
   comments.sort((comment1, comment2) => (comment2.updated_at > comment1.updated_at ? 1 : -1));
 
-const CommentsDrawer = ({ editCheck, resourceURI }) => {
+const CommentsDrawer = ({ editCheck }) => {
   const [showCommentsDrawer, setShowCommentsDrawer] = useState(false);
   const [selectedFilterOption, setSelectedFilterOption] = useState({ value: 'open', label: 'Open' });
   const [comments, setComments] = useState([]);
@@ -27,13 +26,9 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
     { value: 'all', label: 'All' },
   ];
   useEffect(() => {
-    if(params.ecId !== undefined && showCommentsDrawer){
+    if(params.ecId === editCheck.Id){
       setShowCommentsDrawer(true)
     }
-    console.log(editCheck);
-    const data = getData().then((response) => {
-      console.log(response.data);
-    });
   })
   useEffect(() => {
     const loadComments = async () => {
@@ -42,9 +37,9 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
           {
               "uuid": "4430d335-4de5-4eee-b6b2-f2a21896faa5",
               "body": "Comment to resolve",
-              "created_by": "Ritik Jaiswal",
+              "created_by": "Snehal Sonaye",
               "created_at": "2023-12-05T08:56:16.250Z",
-              "updated_by": "Ritik Jaiswal",
+              "updated_by": "Snehal Sonaye",
               "updated_at": "2023-12-05T08:56:17.677Z",
               "is_resolved": true,
               "resource_uri": "com:mdsol:schedules:8b9a4cb6-3757-4121-979a-c44df17eb8c5",
@@ -53,9 +48,9 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
           {
               "uuid": "e59a2050-48e6-48c2-ae70-542fd63b10b6",
               "body": "New comment",
-              "created_by": "Ritik Jaiswal",
+              "created_by": "Snehal Sonaye",
               "created_at": "2023-12-05T08:55:47.812Z",
-              "updated_by": "Ritik Jaiswal",
+              "updated_by": "Snehal Sonaye",
               "updated_at": "2023-12-05T08:56:01.982Z",
               "is_resolved": false,
               "resource_uri": "com:mdsol:schedules:8b9a4cb6-3757-4121-979a-c44df17eb8c5",
@@ -70,18 +65,22 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
       }
     };
     loadComments();
-  }, [resourceURI]);
+  }, [editCheck]);
 
   const handleAddComment = async newComment => {
     try {
+      let comment = newComment.trim();
       const commentBody = {
-        body: newComment.trim(),
-        resource_uri: resourceURI,
-      };
+        body: comment,
+        resource_uri: `com:mdsol:edc_edit_checks:${editCheck.Id}`
+      }
+      // addComments(commentBody).then((response) => {
+      //   console.log("successfully added");
+      // });
       const addedComment = {
         "uuid": "c743d1c4-1394-4410-a845-2560e7a40832",
-        "body": "One more comment",
-        "created_by": "Ritik Jaiswal",
+        "body": comment,
+        "created_by": "Snehal Sonaye",
         "created_at": "2023-12-05T08:57:57.930Z",
         "updated_at": "2023-12-05T08:57:57.930Z",
         "is_resolved": false,
@@ -113,7 +112,7 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
             "comment_uuid": "e59a2050-48e6-48c2-ae70-542fd63b10b6",
             "body": "A reply on comment",
             "created_at": "2023-12-05T08:56:01.982Z",
-            "created_by": "Ritik Jaiswal"
+            "created_by": "Snehal Sonaye"
         }
     ];
       const updatedCommentRepliesMap = Object.assign({}, commentRepliesMap);
@@ -135,7 +134,7 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
         "comment_uuid": "c743d1c4-1394-4410-a845-2560e7a40832",
         "body": "A new reply",
         "created_at": "2023-12-05T09:52:39.212Z",
-        "created_by": "Ritik Jaiswal"
+        "created_by": "Snehal Sonaye"
     };
       const updatedComments = [...comments];
       const commentIndex = updatedComments.findIndex(comment => comment.uuid === addedReply.comment_uuid);
@@ -163,7 +162,7 @@ const CommentsDrawer = ({ editCheck, resourceURI }) => {
       const resolvedComment = {
         "uuid": "c743d1c4-1394-4410-a845-2560e7a40832",
         "body": "One more comment",
-        "created_by": "Ritik Jaiswal",
+        "created_by": "Snehal Sonaye",
         "created_at": "2023-12-05T08:57:57.930Z",
         "updated_at": "2023-12-05T09:53:24.141Z",
         "is_resolved": true,
